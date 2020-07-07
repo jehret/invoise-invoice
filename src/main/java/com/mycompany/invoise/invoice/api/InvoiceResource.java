@@ -1,5 +1,6 @@
 package com.mycompany.invoise.invoice.api;
 
+import com.mycompany.invoise.core.entity.customer.Address;
 import com.mycompany.invoise.core.entity.customer.Customer;
 import com.mycompany.invoise.core.entity.invoice.Invoice;
 import com.mycompany.invoise.invoice.service.InvoiceServiceInterface;
@@ -42,8 +43,12 @@ public class InvoiceResource {
     public Invoice get(@PathVariable("id") String number){
         System.out.println("La méthode displayInvoice a été invoquée");
         Invoice invoice=invoiceService.getInvoiceByNumber(number);
-        invoice.setCustomer(restTemplate.getForObject("http://localhost:8081/customer/"+invoice.getIdCustomer(),
-                Customer.class));
+        final Customer customer=restTemplate.getForObject("http://localhost:8081/customer/"+invoice.getIdCustomer(),
+                Customer.class);
+        final Address address=restTemplate.getForObject("http://localhost:8081/address/"+customer.getAddress().getId(),
+                Address.class);
+        customer.setAddress(address);
+        invoice.setCustomer(customer);
         return invoice;
     }
 
