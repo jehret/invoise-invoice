@@ -8,6 +8,7 @@ import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.reactive.function.client.WebClient;
 
 @SpringBootApplication
 @EntityScan("com.mycompany.invoise.core.entity.invoice")
@@ -27,7 +28,7 @@ public class InvoiceApplication {
 
 	@Bean
 	@LoadBalanced
-	public RestTemplate getRestTemplate(){
-		return new RestTemplate();
+	public WebClient.Builder getWebClientBuilder(){
+		return WebClient.builder();
 	}
 }
