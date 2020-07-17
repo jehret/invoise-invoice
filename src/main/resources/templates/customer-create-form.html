@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Création de la client</title>
+</head>
+<body>
+<form th:action="@{/create-customer}" method="POST" th:object="${customerForm}">
+    <p>Customer name<input type="text" th:field="*{customerName}"/></p>
+    <div th:if="${#fields.hasErrors('customerName')}" th:errors="*{customerName}"></div>
+    <p>Street name<input type="text" th:field="*{streetName}"/></p>
+    <div th:if="${#fields.hasErrors('streetName')}" th:errors="*{streetName}"></div>
+    <p>Street number<input type="text" th:field="*{streetNumber}"/></p>
+    <div th:if="${#fields.hasErrors('streetNumber')}" th:errors="*{streetNumber}"></div>
+    <p>City<input type="text" th:field="*{city}"/></p>
+    <div th:if="${#fields.hasErrors('city')}" th:errors="*{city}"></div>
+    <p>Zip code<input type="text" th:field="*{zipCode}"/></p>
+    <div th:if="${#fields.hasErrors('zipCode')}" th:errors="*{zipCode}"></div>
+    <p>Country<input type="text" th:field="*{country}"/></p>
+    <div th:if="${#fields.hasErrors('country')}" th:errors="*{country}"></div>
+    <div></div>
+    <input type="submit" value="OK"/>
+</form>
+</body>
+</html>

@@ -1,8 +1,11 @@
 package com.mycompany.invoise.invoice.controller;
 
+import com.mycompany.invoise.invoice.form.CustomerForm;
+import com.mycompany.invoise.invoice.form.InvoiceForm;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 @Controller
 public class InvoiceControllerWeb {
@@ -49,13 +52,20 @@ public class InvoiceControllerWeb {
         //List<Invoice> invoices=invoiceService.getInvoiceList();
         return "invoice-details";
     }*/
-/*
+
     @GetMapping("/create-form")
     public String displayInvoiceCreateForm(@ModelAttribute InvoiceForm invoice){
         //vous pourriez même supprimer l'annotation @ModelAttribute si vous ne comptez
         //pas donner un identifiant personnalisé au backing bean
         return "invoice-create-form";
-    }*/
+    }
+
+    @GetMapping("/create-customer-form")
+    public String displayCustomerCreateForm(@ModelAttribute CustomerForm customer){
+        //vous pourriez même supprimer l'annotation @ModelAttribute si vous ne comptez
+        //pas donner un identifiant personnalisé au backing bean
+        return "customer-create-form";
+    }
 
 
 }
