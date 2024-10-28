@@ -36,7 +36,7 @@ public class InvoiceResource {
 
         List<Invoice> liste=new ArrayList<>();
         Customer customer=new Customer("Lambda");
-        Invoice invoice=new Invoice("NUM_001","001",customer);
+        Invoice invoice=new Invoice(001L,"001",customer);
         liste.add(invoice);
 
         return liste;
