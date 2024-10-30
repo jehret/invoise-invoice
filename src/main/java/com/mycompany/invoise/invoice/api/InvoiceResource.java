@@ -39,7 +39,7 @@ public class InvoiceResource {
     }
 
     @GetMapping("/{id}")
-    public Invoice get(@PathVariable("id") String number){
+    public Invoice get(@PathVariable("id") Long number){
         System.out.println("La méthode displayInvoice a été invoquée");
         Invoice invoice=invoiceService.getInvoiceByNumber(number);
         invoice.setCustomer(restTemplate.getForObject("http://localhost:8081/customer/"+invoice.getIdCustomer(),
