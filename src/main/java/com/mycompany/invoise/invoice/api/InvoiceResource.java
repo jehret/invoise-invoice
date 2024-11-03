@@ -59,7 +59,7 @@ public class InvoiceResource {
 
         final Flux<Invoice> invoiceFlux=Flux.concat(invoiceMonos);
 
-        return invoiceFlux.parallel().runOn(Schedulers.elastic());
+        return invoiceFlux.parallel().runOn(Schedulers.boundedElastic());
 
     }
 
