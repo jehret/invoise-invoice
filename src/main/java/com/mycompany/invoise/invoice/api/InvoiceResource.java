@@ -64,7 +64,7 @@ public class InvoiceResource {
     }
 
     @GetMapping("/{id}")
-    public Invoice get(@PathVariable("id") String number){
+    public Invoice get(@PathVariable("id") Long number){
         System.out.println("La méthode displayInvoice a été invoquée");
         Invoice invoice=invoiceService.getInvoiceByNumber(number);
 
